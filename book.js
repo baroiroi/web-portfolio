@@ -69,12 +69,14 @@ const book = {
     removeBtn.classList.add('remove')
     removeBtn.innerText = `delete`
     removeBtn.addEventListener('click', e =>{
-        for(let x = books.length - 1; x >= 0; x--){ 
-            if(x = book.bookId){
-                books.splice(x, 1);
-            }
-        }
-        removeBtn.parentElement.remove()
+        for(let x of books){
+        if(x = book.bookId){
+            x -= 1;
+        delete books[x];
+       }
+       removeBtn.parentElement.remove()
+    }
+       
     })
     div.appendChild(removeBtn)
 
