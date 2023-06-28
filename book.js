@@ -63,6 +63,9 @@ const book = {
     const editButton = document.createElement('button')
     editButton.classList.add('edit')
     editButton.innerText = `edit`
+    editButton.addEventListener('click', e =>{
+
+    })
     div.appendChild(editButton)
 
     const removeBtn = document.createElement('button')
@@ -71,8 +74,7 @@ const book = {
     removeBtn.addEventListener('click', e =>{
         for(let x of books){
         if(x = book.bookId){
-            x -= 1;
-        delete books[x];
+        delete books[x-1];
        }
        removeBtn.parentElement.remove()
     }
