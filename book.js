@@ -3,9 +3,8 @@ const form = document.querySelector('form')
 const bookTitle = document.getElementById('bookTitle')
 const bookAuthor = document.getElementById('bookAuthor')
 const text = document.getElementById('text')
-
 let bookId = 1
-
+// check input data
 form.addEventListener('submit', e => {
     e.preventDefault()
   
@@ -31,7 +30,7 @@ form.addEventListener('submit', e => {
         text.innerText ='Please enter Book Author!'
         return
                                 }
-  
+  //gets the data input
 const book = {
         bookId: bookId,
         title: bookTitle.value,
@@ -40,7 +39,7 @@ const book = {
    
    books.push(book)
    
-    // adding book and author
+    // adding book and author(edit and delete button actions)
     const div = document.createElement('div')
     div.classList.add('bookItem')
 
@@ -49,9 +48,11 @@ const book = {
     bookIdCol.innerText = `Book ID: ${book.bookId}`
     div.appendChild(bookIdCol)
 
+    const titleLabel = document.createElement('label')
+    titleLabel.innerText = `Book Title:`
     const titleCol = document.createElement('p')
     titleCol.classList.add('title')
-    titleCol.innerText = `Book Title: ${book.title}`
+    titleCol.innerText = `${book.title}`
     div.appendChild(titleCol)
 
 
@@ -64,6 +65,11 @@ const book = {
     editButton.classList.add('edit')
     editButton.innerText = `edit`
     editButton.addEventListener('click', e =>{
+        const input = document.createElement('input')
+        input.type = 'text'
+        input.value = titleCol.innerText
+        div.insertBefore(input, titleCol)
+        div.removeChild(titleCol)
 
     })
     div.appendChild(editButton)
