@@ -48,12 +48,14 @@ const book = {
     bookIdCol.innerText = `Book ID: ${book.bookId}`
     div.appendChild(bookIdCol)
 
-    const titleLabel = document.createElement('label')
-    titleLabel.innerText = `Book Title:`
+    const titleLabel = document.createElement('span') //label
+    titleLabel.innerText = `Book Title: ${book.title}`
     const titleCol = document.createElement('p')
     titleCol.classList.add('title')
     titleCol.innerText = `${book.title}`
-    div.appendChild(titleCol)
+        div.appendChild(titleLabel)
+        // div.appendChild(titleCol)
+
 
 
     const authorCol = document.createElement('p')
@@ -66,10 +68,13 @@ const book = {
     editButton.innerText = `edit`
     editButton.addEventListener('click', e =>{
         const input = document.createElement('input')
+        input.name = 'input'
         input.type = 'text'
         input.value = titleCol.innerText
-        div.insertBefore(input, titleCol)
-        div.removeChild(titleCol)
+        div.insertBefore(input, titleLabel)
+        div.removeChild(titleLabel)
+        // div.removeChild(titleCol)
+        
 
     })
     div.appendChild(editButton)
